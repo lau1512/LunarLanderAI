@@ -5,14 +5,12 @@ import numpy as np
 n_sims = 1000
 fuel = np.array([])
 sim = LunarLander()
-#for i in range(n_sims):
 successful_attempts = 0
 failed_attempts = 0
 while successful_attempts < n_sims:
     sim.reset()
     done = False
     while not done:
-        #sim.render()
         (x, y, xspeed, yspeed), reward, done = sim.step((boost, left, right))
         if x > 15:
             right = True
@@ -56,7 +54,7 @@ z = 2.58
 m_x = np.mean(fuel)
 s_x = math.sqrt(1/(n_sims-1)*sum((fuel-m_x)**2))
 v_m_x = s_x/math.sqrt(n_sims)
-print("Data for",n_sims,"simulations:")
+print("Data for",successful_attempts+failed_attempts,"simulations:")
 print("m_x: ",m_x)
 print("s_x: ",s_x)
 print("v_m_x: ",v_m_x)
